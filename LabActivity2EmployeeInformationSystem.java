@@ -1,7 +1,7 @@
 // Importing the scanner module in order to get inputs from the user
 import java.util.Scanner;
 
-public class LabActivity1EmployeeInformationSystem {
+public class LabActivity2EmployeeInformationSystem {
     
     public static void main(String[] args) {
         // Defining the scanner module to be used later on
@@ -29,18 +29,18 @@ public class LabActivity1EmployeeInformationSystem {
         // This part of the code block contains and processes the concatenation of all the collected information of the user
         System.out.println("\n---Employee Information---");
         System.out.println("Employee name: \t\t " + upperLastName + ", " + upperFirstName);
-        System.out.println("Employee age: \t\t " + employeeAge + " " + "years old");
-        System.out.println("Years to retirement: \t" + " " + retirementAge + " " + "years");
+        System.out.println("Employee age: \t\t " + employeeAge + " years old");
+        System.out.println("Years to retirement:  \t " + retirementAge + " years");
 
         Float dailySalary = (float) (Math.round(hoursWorked * hourlyWage)); // These codes calculate the daily, weekly, monthly, gross and net yearly salary
-        Float weeklySalary = (float) (Math.round(dailySalary * 5)); // they all have (float) because 'Math.round()' outputs out int but since we used float on all of em we just force it to output float using (float)
-        Float monthlySalary = (float) (Math.round(weeklySalary * 4));
-        Float grossYearlySalary = (float) (Math.round(monthlySalary * 12));
+        Float weeklySalary = (dailySalary * 5); // they all have (float) because 'Math.round()' outputs out int but since we used float on all of em we just force it to output float using (float)
+        Float monthlySalary = (weeklySalary * 4);
+        Float grossYearlySalary = (monthlySalary * 12);
+        Float percentOfGYS = (0.32f * grossYearlySalary); // this gets the percent of the gross yearly salary
+        Float netYearlySalary = (float) (Math.round((grossYearlySalary - percentOfGYS) * 10)) / 10 - 1500; // then this gets the final net yearly salary
+        //I added the multiplication by 10 to make it so that the 'Math.round' rounds the tenth's place of the decimal point so that it evens it out to 0
+        // Then back to dividing it by 10 to return the decimal point to its original place.
 
-        Float percentage = 0.32f; // I separated the percent in this because java considers '0.32' as a double and cannot compute it directly
-        Float percentOfGYS = (Math.abs(percentage * grossYearlySalary)); // this gets the percent of the gross yearly salary
-        Float netYearlySalary = (Math.abs(grossYearlySalary - percentOfGYS) - 1500 - 0.01f); // then this gets the final net yearly salary
-        // I added '-0.01' cuz the output always comes up an additional 0.01
         System.out.printf("Daily salary:            PHP %.2f\n", dailySalary); // The '%.2f' determines the maximum amount of decimal places that the computer outputs
         System.out.printf("Weekly salary:           PHP %.2f\n", weeklySalary);
         System.out.printf("Monthly salary:          PHP %.2f\n", monthlySalary);
