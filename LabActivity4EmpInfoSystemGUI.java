@@ -139,7 +139,7 @@ public class LabActivity4EmpInfoSystemGUI extends JFrame {
     }
 
     public static void main(String[] args) {
-        MainFrame myFrame = new MainFrame();
+        LabActivity4EmpInfoSystemGUI myFrame = new LabActivity4EmpInfoSystemGUI();
         myFrame.Initialize();
     }
 }
